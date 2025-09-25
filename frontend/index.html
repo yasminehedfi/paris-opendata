@@ -9,20 +9,19 @@
   <h1>Arbres remarquables de Paris</h1>
 
   <h2>Nombre d’arbres par arrondissement</h2>
-  <canvas id="chartArr" width="400" height="200"></canvas>
+  <canvas id="chartArr" width="200" height="100"></canvas>
 
   <h2>Hauteur moyenne par arrondissement</h2>
-  <canvas id="chartHeight" width="400" height="200"></canvas>
+  <canvas id="chartHeight" width="200" height="100"></canvas>
 
   <h2>Répartition par genre</h2>
-  <canvas id="chartGenre" width="400" height="200"></canvas>
+  <canvas id="chartGenre" width="200" height="100"></canvas>
 
   <script>
-    // 🔹 1. Nombre d’arbres par arrondissement
     fetch("http://localhost:8081/api/count_by_arr")
       .then(res => res.json())
       .then(data => {
-        console.log("count_by_arr:", data); // debug
+        console.log("count_by_arr:", data); 
         const labels = data.map(d => d.arr);
         const values = data.map(d => d.count);
 
@@ -39,11 +38,10 @@
         });
       });
 
-    // 🔹 2. Hauteur moyenne par arrondissement
     fetch("http://localhost:8081/api/avg_height_by_arr")
       .then(res => res.json())
       .then(data => {
-        console.log("avg_height_by_arr:", data); // debug
+        console.log("avg_height_by_arr:", data);
         const labels = data.map(d => d.arr);
         const values = data.map(d => d.avg_hauteur);
 
@@ -60,11 +58,10 @@
         });
       });
 
-    // 🔹 3. Répartition par genre
     fetch("http://localhost:8081/api/count_by_genre")
       .then(res => res.json())
       .then(data => {
-        console.log("count_by_genre:", data); // debug
+        console.log("count_by_genre:", data); 
         const labels = data.map(d => d.genre);
         const values = data.map(d => d.count);
 
