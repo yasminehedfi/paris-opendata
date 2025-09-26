@@ -6,7 +6,6 @@ import (
 	"net/http"
 )
 
-// --- Compter les arbres par arrondissement ---
 func countByArr(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		rows, err := db.Query("SELECT arr, COUNT(*) FROM arbres_remarquables GROUP BY arr")
@@ -31,7 +30,6 @@ func countByArr(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// --- Hauteur moyenne par arrondissement ---
 func avgHeightByArr(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		rows, err := db.Query(`
@@ -61,7 +59,6 @@ func avgHeightByArr(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// --- Compter les arbres par genre ---
 func countByGenre(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		rows, err := db.Query(`

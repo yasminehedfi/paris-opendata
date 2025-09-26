@@ -68,5 +68,5 @@ func loadData(db *sql.DB) {
 		}
 	}
 
-	fmt.Println(" Données importées avec succès depuis l'API v2.1")
+	fmt.Println(" Données importées avec succès depuis l'API ")
 }

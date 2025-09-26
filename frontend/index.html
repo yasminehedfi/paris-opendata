@@ -2,20 +2,66 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arbres remarquables de Paris</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .chart-container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .chart-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+    canvas {
+      max-width: 100%;
+    }
+  </style>
 </head>
 <body>
   <h1>Arbres remarquables de Paris</h1>
 
-  <h2>Nombre d’arbres par arrondissement</h2>
-  <canvas id="chartArr" width="200" height="100"></canvas>
+  <div class="chart-container">
+    <h2>Nombre d'arbres par arrondissement</h2>
+    <div class="chart-wrapper">
+      <canvas id="chartArr" width="400" height="200"></canvas>
+    </div>
+  </div>
 
-  <h2>Hauteur moyenne par arrondissement</h2>
-  <canvas id="chartHeight" width="200" height="100"></canvas>
+  <div class="chart-container">
+    <h2>Hauteur moyenne par arrondissement</h2>
+    <div class="chart-wrapper">
+      <canvas id="chartHeight" width="400" height="200"></canvas>
+    </div>
+  </div>
 
-  <h2>Répartition par genre</h2>
-  <canvas id="chartGenre" width="200" height="100"></canvas>
+  <div class="chart-container">
+    <h2>Répartition par genre</h2>
+    <div class="chart-wrapper">
+      <canvas id="chartGenre" width="300" height="200"></canvas>
+    </div>
+  </div>
 
   <script>
     fetch("http://localhost:8081/api/count_by_arr")
@@ -30,10 +76,19 @@
           data: {
             labels: labels,
             datasets: [{
-              label: "Nombre d’arbres",
+              label: "Nombre d'arbres",
               data: values,
               backgroundColor: "rgba(54, 162, 235, 0.6)"
             }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
           }
         });
       });
@@ -54,6 +109,15 @@
               data: values,
               backgroundColor: "rgba(75, 192, 192, 0.6)"
             }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
           }
         });
       });
@@ -80,6 +144,10 @@
                 "rgba(153, 102, 255, 0.6)"
               ]
             }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false
           }
         });
       });
