@@ -10,7 +10,7 @@ import (
 )
 
 func loadData(db *sql.DB) {
-	url := "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arbresremarquablesparis/records?limit=100"
+	url := "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arbresremarquablesparis/records?limit=20"
 
 	resp, err := http.Get(url)
 	if err != nil {
